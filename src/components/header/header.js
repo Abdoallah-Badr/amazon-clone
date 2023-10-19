@@ -56,7 +56,7 @@ function Header() {
             alt="cart icon"
           />
           <p className="font-bold text-white ">Cart</p>
-          <p className="absolute top-0 text-lg left-[29px] text-amazon_yellow ">
+          <p className="absolute top-2 text-sm left-[29px] text-amazon_yellow ">
             0
           </p>
         </div>
