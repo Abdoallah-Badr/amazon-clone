@@ -1,7 +1,5 @@
 function Cart() {
-  return (
-    <div>Cart</div>
-  )
+  return <div className="h-20 bg-gray-300">Cart</div>;
 }
 
-export default Cart
+export default Cart;

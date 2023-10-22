@@ -4,18 +4,22 @@ import cartIcon from "../../images/cartIcon.png";
 import { BiCaretDown } from "react-icons/bi";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlLocationPin } from "react-icons/sl";
+import Link from "next/link";
 
 function Header() {
   return (
     <div className="sticky top-0 z-50 w-full h-20 bg-amazon_blue text-lightText">
       <div className="inline-flex items-center justify-between w-full h-full gap-1 px-4 mx-auto-flex mdl:gap-3">
-        <div className="p-2 duration-300 border border-transparent hover:border-cyan-50 hover:cursor-pointer">
+        <Link
+          href={"/"}
+          className="p-2 duration-300 border border-transparent hover:border-cyan-50 hover:cursor-pointer"
+        >
           <Image
             className="object-cover mt-1 w-28"
             src={logo}
             alt="amazon logo"
           />
-        </div>
+        </Link>
         {/* delivery */}
         <div className=" h-[70%] items-center hidden p-2 duration-300 border border-transparent xl:inline-flex hover:border-cyan-50 hover:cursor-pointer">
           <SlLocationPin className="mr-1" />
@@ -49,17 +53,20 @@ function Header() {
           <p className="font-bold text-white">& favorite</p>
         </div>
         {/* cart */}
-        <div className="relative flex items-end p-2 text-xs duration-300 border border-transparent text-end hover:border-cyan-50 hover:cursor-pointer h-[70%]">
+        <Link
+          href={"/cart"}
+          className="relative flex items-end p-2 text-xs duration-300 border border-transparent text-end hover:border-cyan-50 hover:cursor-pointer h-[70%]"
+        >
           <Image
             className="object-cover w-auto h-8"
             src={cartIcon}
             alt="cart icon"
           />
           <p className="font-bold text-white ">Cart</p>
-          <p className="absolute top-2 text-sm left-[29px] text-amazon_yellow ">
+          <p className="absolute top-1 text-sm left-[29px] text-amazon_yellow ">
             0
           </p>
-        </div>
+        </Link>
       </div>
     </div>
   );
