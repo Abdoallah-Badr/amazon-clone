@@ -1,12 +1,16 @@
 import Image from "next/image";
 import logo from "../../images/logo.png";
 import cartIcon from "../../images/cartIcon.png";
+
 import { BiCaretDown } from "react-icons/bi";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlLocationPin } from "react-icons/sl";
-import Link from "next/link";
 
+import Link from "next/link";
+import { useSelector } from "react-redux";
 function Header() {
+  const { allCartProducts } = useSelector((state) => state.items);
+  console.log(allCartProducts);
   return (
     <div className="sticky top-0 z-50 w-full h-20 bg-amazon_blue text-lightText">
       <div className="inline-flex items-center justify-between w-full h-full gap-1 px-4 mx-auto-flex mdl:gap-3">
@@ -63,8 +67,8 @@ function Header() {
             alt="cart icon"
           />
           <p className="font-bold text-white ">Cart</p>
-          <p className="absolute top-1 text-sm left-[29px] text-amazon_yellow ">
-            0
+          <p className="absolute top-2 text-sm left-[30px] text-amazon_yellow ">
+            {allCartProducts ? allCartProducts : 0}
           </p>
         </Link>
       </div>

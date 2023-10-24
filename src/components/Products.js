@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import FormattedPrice from "./FormattedPrice";
 
-import { addToCartAction } from "@/store/itemsSlice";
+import { addToCartAction, addToFavoriteAction } from "@/store/itemsSlice";
 
 function Products({ productsList }) {
   const dispatch = useDispatch();
@@ -43,7 +43,24 @@ function Products({ productsList }) {
                 <span className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_yellow">
                   <FaShoppingCart />
                 </span>
-                <span className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_yellow">
+                <span
+                  onClick={() => {
+                    dispatch(
+                      addToFavoriteAction({
+                        _id,
+                        title,
+                        description,
+                        oldPrice,
+                        price,
+                        brand,
+                        image,
+                        isNew,
+                        category,
+                      })
+                    );
+                  }}
+                  className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_yellow"
+                >
                   <FaHeart />
                 </span>
               </div>
@@ -67,7 +84,7 @@ function Products({ productsList }) {
                   {`${description}`.substring(0, 120)}
                 </p>
                 <button
-                  onClick={() => {
+                  onClick={() =>
                     dispatch(
                       addToCartAction({
                         _id,
@@ -81,8 +98,8 @@ function Products({ productsList }) {
                         category,
                         quantity: 1,
                       })
-                    );
-                  }}
+                    )
+                  }
                   className="py-3 mt-1 text-sm font-medium text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
                 >
                   add to cart
