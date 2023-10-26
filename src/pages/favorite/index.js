@@ -8,7 +8,7 @@ function FavoritePage() {
   const dispatch = useDispatch();
   return (
     <div className="p-3 bg-gray-300 h-max">
-      <div className="max-w-screen-xl m-2 rounded-lg bg-slate-50 h-max">
+      <div className="max-w-screen-xl m-2 mx-auto rounded-lg bg-slate-50 h-max">
         {!favoriteList.length ? (
           <div className="flex flex-col h-[50vh] justify-center items-center ">
             <p>No favorite items you added !</p>

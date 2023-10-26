@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "@/components/ProductCard";
 import { resetCart } from "@/store/itemsSlice";
 function CartPage() {
   const cartProducts = useSelector((state) => state.items.cartProducts);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div className="p-3 bg-gray-300 h-max">
-      <div className="max-w-screen-xl m-2 rounded-lg bg-slate-50 h-max">
+      <div className="max-w-screen-xl m-2 mx-auto rounded-lg bg-slate-50 h-max">
         {!cartProducts.length ? (
           <div className="flex flex-col h-[50vh] justify-center items-center ">
             <p>your cart is empty !</p>
@@ -50,7 +50,7 @@ function CartPage() {
                       isNew={isNew}
                       category={category}
                       quantity={quantity}
-                      type = 'CART'
+                      type="CART"
                     />
                   );
                 }
@@ -59,9 +59,8 @@ function CartPage() {
             <button
               onClick={() => {
                 dispatch(resetCart());
-                dispatch()
               }}
-              className="py-2 font-semibold text-black duration-300 bg-gray-200 rounded-lg px-7 hover:bg-red-600 hover:text-white"
+              className="px-12 py-2 font-semibold text-black duration-300 bg-gray-200 rounded-lg hover:bg-red-600 hover:text-white"
             >
               reset cart
             </button>

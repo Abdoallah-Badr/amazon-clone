@@ -27,12 +27,18 @@ function ProductCard({
 }) {
   const dispatch = useDispatch();
   return (
-    <div key={_id} className="flex p-4 mb-4 bg-gray-100 rounded-xl">
-      <span className="mr-2 shrink-0">
-        <Image src={image} alt={title + " image"} width={150} height={150} />
+    <div key={_id} className="flex p-4 mb-4 bg-gray-100 max-md:flex-wrap rounded-xl">
+      <span className="mr-2 shrink-0 max-md:basis-full ">
+        <Image
+          className="max-md:mx-auto"
+          src={image}
+          alt={title + " image"}
+          width={150}
+          height={150}
+        />
       </span>
       <div className="relative flex gap-4 ">
-        <div className="">
+        <div>
           <h3 className="text-xl font-semibold ">{title}</h3>
           <p className="my-1 text-sm text-gray-600">{description}</p>
           <p>

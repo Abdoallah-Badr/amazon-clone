@@ -53,7 +53,7 @@ function Header() {
           </p>
         </div>
         {/* favorite */}
-        <Link href={'/favorite'}>
+        <Link href={"/favorite"}>
           <div className="p-2 flex h-[70%] flex-col justify-center text-xs duration-300 border border-transparent  hover:border-cyan-50 hover:cursor-pointer relative">
             {favoriteProducts.length ? (
               <p className="absolute top-2 right-1 px-[3px] border border-gray-100 text-amazon_yellow text-center">
@@ -67,7 +67,7 @@ function Header() {
         {/* cart */}
         <Link
           href={"/cart"}
-          className="relative flex items-end p-2 text-xs duration-300 border border-transparent text-end hover:border-cyan-50 hover:cursor-pointer h-[70%]"
+          className="relative flex items-end p-2 text-xs duration-300 border border-transparent text-end hover:border-cyan-50 hover:cursor-pointer h-[70%] font-semibold"
         >
           <Image
             className="object-cover w-auto h-8"
@@ -75,7 +75,7 @@ function Header() {
             alt="cart icon"
           />
           <p className="font-bold text-white ">Cart</p>
-          <p className="absolute top-2 text-sm left-[30px] text-amazon_yellow ">
+          <p className="absolute top-2 text-sm left-[29px] text-amazon_yellow ">
             {allCartProducts ? allCartProducts : 0}
           </p>
         </Link>

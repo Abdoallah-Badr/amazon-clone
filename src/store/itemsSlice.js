@@ -75,6 +75,7 @@ export const itemsSlice = createSlice({
     },
     resetCart: (state, action) => {
       state.cartProducts = [];
+      state.allCartProducts = 0;
     },
     resetfavoriteList: (state, action) => {
       state.favoriteProducts = [];
