@@ -1,15 +1,19 @@
 import React, { use } from "react";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import FormattedPrice from "./FormattedPrice";
 
-import { addToCartAction, addToFavoriteAction } from "@/store/itemsSlice";
+import {
+  addToCartAction,
+  addToFavoriteAction,
+} from "@/store/itemsSlice";
 
 function Products({ productsList }) {
   const dispatch = useDispatch();
+  const { favoriteProducts } = useSelector((state) => state.items);
   return (
     <>
       {productsList.map(
@@ -40,7 +44,24 @@ function Products({ productsList }) {
               </div>
               <hr className="mt-2" />
               <div className="absolute right-0 flex flex-col items-center h-24 text-lg transition-transform duration-300 translate-x-20 bg-transparent border border-gray-400 rounded-md cursor-pointer w-11 bottom-2/3 group-hover:translate-x-[-16px] bg-white">
-                <span className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_yellow">
+                <span
+                  onClick={() => {
+                    dispatch(
+                      addToCartAction({
+                        _id,
+                        title,
+                        description,
+                        oldPrice,
+                        price,
+                        brand,
+                        image,
+                        isNew,
+                        category,
+                      })
+                    );
+                  }}
+                  className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_yellow"
+                >
                   <FaShoppingCart />
                 </span>
                 <span
@@ -61,7 +82,14 @@ function Products({ productsList }) {
                   }}
                   className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_yellow"
                 >
-                  <FaHeart />
+                  <FaHeart
+                    className={`${
+                      favoriteProducts &&
+                      favoriteProducts.some((item) => item._id === _id)
+                        ? "text-red-600"
+                        : ""
+                    }`}
+                  />
                 </span>
               </div>
               {isNew && (

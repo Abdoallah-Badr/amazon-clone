@@ -37,9 +37,57 @@ export const itemsSlice = createSlice({
         state.favoriteProducts.push(action.payload);
       }
     },
+    inCreaseQuantity: (state, action) => {
+      const existingProduct = state.cartProducts.find(
+        (item) => item._id === action.payload._id
+      );
+      existingProduct.quantity += 1;
+      state.allCartProducts++;
+    },
+    deCreaseQuantity: (state, action) => {
+      const existingProduct = state.cartProducts.find(
+        (item) => item._id === action.payload._id
+      );
+      if (existingProduct.quantity === 1) {
+        state.cartProducts = state.cartProducts.filter(
+          (item) => item._id !== action.payload._id
+        );
+        state.allCartProducts--;
+      } else {
+        existingProduct.quantity -= 1;
+        state.allCartProducts--;
+      }
+    },
+    removeCartProduct: (state, action) => {
+      const existingProduct = state.cartProducts.find(
+        (item) => item._id === action.payload._id
+      );
+      state.cartProducts = state.cartProducts.filter(
+        (item) => item._id !== action.payload._id
+      );
+      state.allCartProducts -= existingProduct.quantity;
+    },
+    addUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    removeUser: (state, action) => {
+      state.userInfo = null;
+    },
+    resetCart: (state, action) => {
+      state.cartProducts = [];
+    },
   },
 });
 
-export const { addToCartAction, addToFavoriteAction } = itemsSlice.actions;
+export const {
+  addToCartAction,
+  addToFavoriteAction,
+  inCreaseQuantity,
+  deCreaseQuantity,
+  removeCartProduct,
+  addUserInfo,
+  removeUser,
+  resetCart,
+} = itemsSlice.actions;
 const itemsSliceReducer = itemsSlice.reducer;
 export default itemsSliceReducer;
