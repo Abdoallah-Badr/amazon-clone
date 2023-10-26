@@ -76,6 +76,9 @@ export const itemsSlice = createSlice({
     resetCart: (state, action) => {
       state.cartProducts = [];
     },
+    resetfavoriteList: (state, action) => {
+      state.favoriteProducts = [];
+    },
   },
 });
 
@@ -88,6 +91,7 @@ export const {
   addUserInfo,
   removeUser,
   resetCart,
+  resetfavoriteList,
 } = itemsSlice.actions;
 const itemsSliceReducer = itemsSlice.reducer;
 export default itemsSliceReducer;

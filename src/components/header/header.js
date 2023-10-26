@@ -53,15 +53,17 @@ function Header() {
           </p>
         </div>
         {/* favorite */}
-        <div className="p-2 flex h-[70%] flex-col justify-center text-xs duration-300 border border-transparent  hover:border-cyan-50 hover:cursor-pointer relative">
-          {favoriteProducts.length ? (
-            <p className="absolute top-2 right-1 px-[3px] border border-gray-100 text-amazon_yellow text-center">
-              {favoriteProducts.length}
-            </p>
-          ) : null}
-          <p>Marked</p>
-          <p className="font-bold text-white">& favorite</p>
-        </div>
+        <Link href={'/favorite'}>
+          <div className="p-2 flex h-[70%] flex-col justify-center text-xs duration-300 border border-transparent  hover:border-cyan-50 hover:cursor-pointer relative">
+            {favoriteProducts.length ? (
+              <p className="absolute top-2 right-1 px-[3px] border border-gray-100 text-amazon_yellow text-center">
+                {favoriteProducts.length}
+              </p>
+            ) : null}
+            <p>Marked</p>
+            <p className="font-bold text-white">& favorite</p>
+          </div>
+        </Link>
         {/* cart */}
         <Link
           href={"/cart"}
