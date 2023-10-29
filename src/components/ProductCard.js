@@ -92,7 +92,7 @@ function ProductCard({
                     })
                   )
                 }
-                className="px-5 py-3 mt-1 text-sm font-medium text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
+                className="px-5 py-3 mt-1 text-sm font-semibold text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
               >
                 add to cart
               </button>

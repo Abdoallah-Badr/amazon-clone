@@ -2,12 +2,17 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "@/components/ProductCard";
 import { resetCart } from "@/store/itemsSlice";
+import TotalCart from "@/components/TotalCart";
 function CartPage() {
   const cartProducts = useSelector((state) => state.items.cartProducts);
   const dispatch = useDispatch();
   return (
-    <div className="p-3 bg-gray-300 h-max">
-      <div className="max-w-screen-xl m-2 mx-auto rounded-lg bg-slate-50 h-max">
+    <div
+      className={`p-3 px-4 bg-gray-300 h-max ${
+        cartProducts.length ? " xl:flex gap-5" : ""
+      }`}
+    >
+      <div className="flex-auto max-w-screen-xl m-2 mx-auto rounded-lg bg-slate-50 h-max">
         {!cartProducts.length ? (
           <div className="flex flex-col h-[50vh] justify-center items-center ">
             <p>your cart is empty !</p>
@@ -67,6 +72,7 @@ function CartPage() {
           </div>
         )}
       </div>
+      {cartProducts.length ? <TotalCart /> : <></>}
     </div>
   );
 }

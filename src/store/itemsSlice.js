@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cartProducts: [],
   allCartProducts: 0,
+  totalCartPrice: 0,
   favoriteProducts: [],
   allProducts: [],
   userInfo: null,
@@ -76,9 +77,17 @@ export const itemsSlice = createSlice({
     resetCart: (state, action) => {
       state.cartProducts = [];
       state.allCartProducts = 0;
+      state.totalCartPrice = 0;
     },
     resetfavoriteList: (state, action) => {
       state.favoriteProducts = [];
+    },
+    setTotalPrice: (state) => {
+      state.totalCartPrice = 0;
+      state.cartProducts.forEach((item) => {
+        const tolalForItem = item.quantity * item.price;
+        state.totalCartPrice += tolalForItem;
+      });
     },
   },
 });
@@ -93,6 +102,7 @@ export const {
   removeUser,
   resetCart,
   resetfavoriteList,
+  setTotalPrice,
 } = itemsSlice.actions;
 const itemsSliceReducer = itemsSlice.reducer;
 export default itemsSliceReducer;
