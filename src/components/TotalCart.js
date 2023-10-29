@@ -1,20 +1,24 @@
 import { GiDandelionFlower } from "react-icons/gi";
 import FormattedPrice from "./FormattedPrice";
 import { setTotalPrice } from "@/store/itemsSlice";
-import { useSelector,useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 function TotalCart() {
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const userInfo = useSelector((state) => state.items.userInfo);
-  const totalCartPrice = useSelector((state) => state.items.totalCartPrice);
-  const allCartProducts = useSelector((state) => state.items.allCartProducts);
-  
-  useEffect(()=>{
-    dispatch(setTotalPrice())
-  },[allCartProducts,dispatch])
-  console.log(totalCartPrice);
+  const cartProducts = useSelector((state) => state.items.cartProducts);
+
+  useEffect(() => {
+    setTotalPrice(0);
+    cartProducts.forEach(({ quantity, price }) => {
+      const totalForItem = quantity * price;
+      setTotalPrice((state) => state + totalForItem);
+    });
+  }, [cartProducts, dispatch]);
+
   return (
     <div className="flex flex-col items-start justify-center w-2/6 gap-4 p-3 mt-2 rounded-lg bg-slate-50 h-max">
       <div className="flex gap-1 ">
@@ -28,7 +32,7 @@ function TotalCart() {
       </div>
       <span className="flex mx-2 text-lg font-semibold text-center ">
         <p>Total:</p>
-        <FormattedPrice amount={totalCartPrice} />
+        <FormattedPrice amount={totalPrice} />
       </span>
       <button
         className={`w-full py-2 font-medium text-white bg-gray-500 rounded-md text-md ${

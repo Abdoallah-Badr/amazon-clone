@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "@/components/ProductCard";
-import { resetfavoriteList } from "@/store/itemsSlice";
+import { resetFavoriteList } from "@/store/itemsSlice";
 
 function FavoritePage() {
   const favoriteList = useSelector((state) => state.items.favoriteProducts);
@@ -57,7 +57,7 @@ function FavoritePage() {
             </div>
             <button
               onClick={() => {
-                dispatch(resetfavoriteList());
+                dispatch(resetFavoriteList());
               }}
               className="py-2 font-semibold text-black duration-300 bg-gray-200 rounded-lg px-7 hover:bg-red-600 hover:text-white"
             >
