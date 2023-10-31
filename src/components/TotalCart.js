@@ -35,8 +35,8 @@ function TotalCart() {
         <FormattedPrice amount={totalPrice} />
       </span>
       <button
-        className={`w-full py-2 font-medium text-white bg-gray-500 rounded-md text-md ${
-          !userInfo ? "hover:cursor-not-allowed" : ""
+        className={`w-full py-2 font-medium text-white  rounded-md text-md bg-black hover:bg-amazon_yellow hover:text-black duration-300 ${
+          !userInfo ? "hover:cursor-not-allowed bg-gray-500" : ""
         }`}
       >
         Proceed to Pay

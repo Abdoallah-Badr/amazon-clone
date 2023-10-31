@@ -7,11 +7,28 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { SlLocationPin } from "react-icons/sl";
 
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { addUserInfo } from "@/store/itemsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 function Header() {
-  const { allCartProducts, favoriteProducts } = useSelector(
+  const { data: session } = useSession();
+  const dispatch = useDispatch();
+  const { allCartProducts, favoriteProducts, userInfo } = useSelector(
     (state) => state.items
   );
+
+  useEffect(() => {
+    dispatch(
+      addUserInfo({
+        name: session?.user?.name,
+        image: session?.user?.image,
+        email: session?.user?.email,
+      })
+    );
+  }, [session, dispatch]);
+
   return (
     <div className="sticky top-0 z-50 w-full h-20 bg-amazon_blue text-lightText">
       <div className="inline-flex items-center justify-between w-full h-full gap-1 px-4 mx-auto-flex mdl:gap-3">
@@ -45,13 +62,31 @@ function Header() {
           </span>
         </div>
         {/* signIn */}
-        <div className="flex h-[70%] flex-col justify-center p-2 text-xs duration-300 border border-transparent hover:border-cyan-50 hover:cursor-pointer">
-          <p>Hello, sign in</p>
-          <p className="flex items-center font-bold text-white">
-            Account & Lists
-            <BiCaretDown />
-          </p>
-        </div>
+
+        {(!session && (
+          <div
+            onClick={() => signIn()}
+            className="flex h-[70%] flex-col justify-center p-2 text-xs duration-300 border border-transparent hover:border-cyan-50 hover:cursor-pointer"
+          >
+            <p>Hello, sign in</p>
+            <p className="flex items-center font-bold text-white">
+              Account & Lists
+              <BiCaretDown />
+            </p>
+          </div>
+        )) || (
+          <div className="flex items-center justify-center">
+            <img
+              className="w-8 h-8 mr-1 rounded-full"
+              src={userInfo.image}
+              alt={"user image"}
+            />
+            <span>
+              <p className="text-xs font-bold"> {userInfo.name} </p>
+              <p className="text-xs ">{userInfo.email}</p>
+            </span>
+          </div>
+        )}
         {/* favorite */}
         <Link href={"/favorite"}>
           <div className="p-2 flex h-[70%] flex-col justify-center text-xs duration-300 border border-transparent  hover:border-cyan-50 hover:cursor-pointer relative">
