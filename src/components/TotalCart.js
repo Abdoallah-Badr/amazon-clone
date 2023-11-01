@@ -1,9 +1,9 @@
 import { GiDandelionFlower } from "react-icons/gi";
 import FormattedPrice from "./FormattedPrice";
-import { setTotalPrice } from "@/store/itemsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-
+import { loadStripe } from "@stripe/stripe-js";
+import { useSession } from "next-auth/react";
 function TotalCart() {
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState(0);
@@ -18,6 +18,34 @@ function TotalCart() {
       setTotalPrice((state) => state + totalForItem);
     });
   }, [cartProducts, dispatch]);
+
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  );
+  const { data: session } = useSession();
+
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
+
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: cartProducts,
+        email: session?.user?.email,
+      }),
+    });
+    const checkoutSession = await response.json();
+    console.log(checkoutSession);
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
+  };
 
   return (
     <div className="flex flex-col items-start justify-center w-2/6 gap-4 p-3 mt-2 rounded-lg bg-slate-50 h-max">
@@ -35,6 +63,7 @@ function TotalCart() {
         <FormattedPrice amount={totalPrice} />
       </span>
       <button
+        onClick={handleCheckout}
         className={`w-full py-2 font-medium text-white  rounded-md text-md bg-black hover:bg-amazon_yellow hover:text-black duration-300 ${
           !userInfo ? "hover:cursor-not-allowed bg-gray-500" : ""
         }`}
