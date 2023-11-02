@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { addUserInfo } from "@/store/itemsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
 function Header() {
   const { data: session } = useSession();
@@ -51,11 +51,11 @@ function Header() {
           </div>
         </div>
         {/* search bar */}
-        <div className="relative items-center justify-between flex-1 hidden h-10 md:inline-flex">
+        <div className="relative items-center justify-between flex-1 hidden h-10 rounded-md md:inline-flex hover:ring-2 hover:ring-amazon_yellow">
           <input
             type="text"
             placeholder="search amazon clone project"
-            className="flex-1 w-full h-full px-2 text-base text-black border-transparent outline-none border-[5px] rounded-md placeholder:text-sm focus:border-none focus-visible:border-amazon_yellow indent-1	"
+            className="flex-1 w-full h-full px-2 text-base text-black border-transparent rounded-md outline-none placeholder:text-sm focus:border-none indent-1"
           />
           <span className="absolute right-0 flex items-center justify-center w-12 h-full text-2xl text-center text-black bg-amazon_yellow hover:cursor-pointer rounded-r-md">
             <HiOutlineSearch />

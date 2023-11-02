@@ -49,8 +49,10 @@ function ProductCard({
               </span>
             }
           </p>
+          {/* ***buttons difference between cart and favorite*** */}
+          {/* cart buttons */}
           {(type === "CART" && (
-            <div className="flex gap-5 mt-4 item-center">
+            <div className="flex gap-5 mt-4 item-center"> 
               <div className="bottom-0 flex items-center justify-between w-32 h-6 gap-2 p-4 border border-gray-300 rounded-full shadow-lg">
                 <span
                   onClick={() => dispatch(inCreaseQuantity({ _id }))}
@@ -74,6 +76,7 @@ function ProductCard({
               </p>
             </div>
           )) || (
+            // ** favorite button ** //
             <div className="mt-4">
               <button
                 onClick={() =>
