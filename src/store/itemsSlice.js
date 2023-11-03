@@ -81,6 +81,9 @@ export const itemsSlice = createSlice({
     resetFavoriteList: (state, action) => {
       state.favoriteProducts = [];
     },
+    setAllProducts:(state,action)=>{
+      state.allProducts = action.payload
+    }
   },
 });
 
@@ -94,6 +97,7 @@ export const {
   removeUser,
   resetCart,
   resetFavoriteList,
+  setAllProducts
 } = itemsSlice.actions;
 const itemsSliceReducer = itemsSlice.reducer;
 export default itemsSliceReducer;

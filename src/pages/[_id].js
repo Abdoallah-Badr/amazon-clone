@@ -6,9 +6,9 @@ import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import { useDispatch } from "react-redux";
-import { BeatLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 
-const DynamicPage = () => {
+const SingleProduct = () => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
@@ -24,7 +24,7 @@ const DynamicPage = () => {
       {isLoading ? (
         <div className="flex flex-col items-center justify-center w-full gap-6 py-20">
           <p>Your product is loading...</p>
-          <BeatLoader color="#131921" size={40} />
+          <PulseLoader color="#131921" size={40} />
         </div>
       ) : (
         <div className="grid w-full gap-3 bg-gray-100 rounded-lg md:grid-cols-3">
@@ -133,4 +133,4 @@ const DynamicPage = () => {
   );
 };
 
-export default DynamicPage;
+export default SingleProduct;

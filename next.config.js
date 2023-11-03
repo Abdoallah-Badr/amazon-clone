@@ -2,8 +2,26 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["i.ibb.co", "avatars.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.ibb.co",
+      },
+      {
+        protocol: "https",
+        hostname: "**.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.googleusercontent.com",
+      },
+    ],
   },
 };
 
 module.exports = nextConfig;
+// domains: [
+//   "i.ibb.co",
+//   "avatars.githubusercontent.com",
+//   "lh3.googleusercontent.com",
+// ],

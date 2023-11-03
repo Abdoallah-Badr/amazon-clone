@@ -1,6 +1,13 @@
 import Banner from "@/components/Banner";
 import Products from "@/components/Products";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setAllProducts } from "@/store/itemsSlice";
 export default function Home({ products }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setAllProducts(products));
+  }, [products, dispatch]);
   return (
     <main>
       <div className="mx-auto max-w-screen-2xl">

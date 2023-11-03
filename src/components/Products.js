@@ -44,7 +44,7 @@ function Products({ productsList }) {
                     image: image,
                     isNew: isNew,
                     category: category,
-                    },
+                  },
                 }}
               >
                 <div className="w-full h-[260px]">
@@ -56,98 +56,98 @@ function Products({ productsList }) {
                     alt={title}
                   />
                 </div>
-                <hr className="mt-2" />
-                <div className="absolute right-0 flex flex-col items-center h-24 text-lg transition-transform duration-300 translate-x-20 bg-transparent border border-gray-400 rounded-md cursor-pointer w-11 bottom-2/3 group-hover:translate-x-[-16px] bg-white">
-                  <span
-                    onClick={() => {
-                      dispatch(
-                        addToCartAction({
-                          _id,
-                          title,
-                          description,
-                          oldPrice,
-                          price,
-                          brand,
-                          image,
-                          isNew,
-                          category,
-                        })
-                      );
-                    }}
-                    className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_yellow"
-                  >
-                    <FaShoppingCart />
+              </Link> 
+              <hr className="mt-2" />
+              <div className="absolute right-0 flex flex-col items-center h-24 text-lg transition-transform duration-300 translate-x-20 bg-transparent border border-gray-400 rounded-md cursor-pointer w-11 bottom-2/3 group-hover:translate-x-[-16px] bg-white">
+                <span
+                  onClick={() => {
+                    dispatch(
+                      addToCartAction({
+                        _id,
+                        title,
+                        description,
+                        oldPrice,
+                        price,
+                        brand,
+                        image,
+                        isNew,
+                        category,
+                      })
+                    );
+                  }}
+                  className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_yellow"
+                >
+                  <FaShoppingCart />
+                </span>
+                <span
+                  onClick={() => {
+                    dispatch(
+                      addToFavoriteAction({
+                        _id,
+                        title,
+                        description,
+                        oldPrice,
+                        price,
+                        brand,
+                        image,
+                        isNew,
+                        category,
+                      })
+                    );
+                  }}
+                  className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_yellow"
+                >
+                  <FaHeart
+                    className={`${
+                      favoriteProducts &&
+                      favoriteProducts.some((item) => item._id === _id)
+                        ? "text-red-600"
+                        : ""
+                    }`}
+                  />
+                </span>
+              </div>
+              {isNew && (
+                <p className="absolute text-sm tracking-wide right-2 top-3 group-hover:animate-bounce group-hover:text-amazon_yellow ">
+                  !save {<FormattedPrice amount={oldPrice - price} />}
+                </p>
+              )}
+              <div className="flex flex-col gap-1 p-4">
+                <p className="text-xs text-gray-400">{category}</p>
+                <p className="text-base font-medium">{title}</p>
+                <p className="w-1/2">
+                  <span className="mr-2 text-sm line-through opacity-80">
+                    <FormattedPrice amount={oldPrice} />
                   </span>
-                  <span
-                    onClick={() => {
-                      dispatch(
-                        addToFavoriteAction({
-                          _id,
-                          title,
-                          description,
-                          oldPrice,
-                          price,
-                          brand,
-                          image,
-                          isNew,
-                          category,
-                        })
-                      );
-                    }}
-                    className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_yellow"
-                  >
-                    <FaHeart
-                      className={`${
-                        favoriteProducts &&
-                        favoriteProducts.some((item) => item._id === _id)
-                          ? "text-red-600"
-                          : ""
-                      }`}
-                    />
+                  <span className="font-semibold text-amazon_blue ">
+                    <FormattedPrice amount={price} />
                   </span>
-                </div>
-                {isNew && (
-                  <p className="absolute text-sm tracking-wide right-2 top-3 group-hover:animate-bounce group-hover:text-amazon_yellow ">
-                    !save {<FormattedPrice amount={oldPrice - price} />}
-                  </p>
-                )}
-                <div className="flex flex-col gap-1 p-4">
-                  <p className="text-xs text-gray-400">{category}</p>
-                  <p className="text-base font-medium">{title}</p>
-                  <p className="w-1/2">
-                    <span className="mr-2 text-sm line-through opacity-80">
-                      <FormattedPrice amount={oldPrice} />
-                    </span>
-                    <span className="font-semibold text-amazon_blue ">
-                      <FormattedPrice amount={price} />
-                    </span>
-                  </p>
-                  <p className="my-2 text-xs ">
-                    {`${description}`.substring(0, 120)}
-                  </p>
-                  <button
-                    onClick={() =>
-                      dispatch(
-                        addToCartAction({
-                          _id,
-                          title,
-                          description,
-                          oldPrice,
-                          price,
-                          brand,
-                          image,
-                          isNew,
-                          category,
-                          quantity: 1,
-                        })
-                      )
-                    }
-                    className="py-3 mt-1 text-sm font-medium text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
-                  >
-                    add to cart
-                  </button>
-                </div>
-              </Link>
+                </p>
+                <p className="my-2 text-xs ">
+                  {`${description}`.substring(0, 120)}
+                </p>
+                <button
+                  onClick={() =>
+                    dispatch(
+                      addToCartAction({
+                        _id,
+                        title,
+                        description,
+                        oldPrice,
+                        price,
+                        brand,
+                        image,
+                        isNew,
+                        category,
+                        quantity: 1,
+                      })
+                    )
+                  }
+                  className="py-3 mt-1 text-sm font-medium text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
+                >
+                  add to cart
+                </button>
+              </div>
             </div>
           );
         }
