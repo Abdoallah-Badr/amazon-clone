@@ -90,7 +90,7 @@ function Header() {
             ref={inputRef}
             type="text"
             placeholder="search amazon clone project"
-            className="flex-1 w-full h-full px-2 text-base text-black border-transparent rounded-md outline-none placeholder:text-sm focus:border-none indent-1 hover:ring-2 hover:ring-amazon_yellow"
+            className="flex-1 w-full h-full px-2 text-base text-black border-transparent rounded-md outline-none placeholder:text-sm focus:border-none indent-1 hover:ring-2 hover:ring-amazon_green"
             onChange={handleSearch}
           />
 
@@ -146,7 +146,7 @@ function Header() {
           ) : (
             <>{""}</>
           )}
-          <span className="absolute right-0 flex items-center justify-center w-12 h-full text-2xl text-center text-black bg-amazon_yellow hover:cursor-pointer rounded-r-md">
+          <span className="absolute right-0 flex items-center justify-center w-12 h-full text-2xl text-center text-black bg-amazon_green hover:cursor-pointer rounded-r-md">
             <HiOutlineSearch />
           </span>
         </div>
@@ -182,7 +182,7 @@ function Header() {
         <Link href={"/favorite"}>
           <div className="p-2 flex h-[70%] flex-col justify-center text-xs duration-300 border border-transparent  hover:border-cyan-50 hover:cursor-pointer relative">
             {favoriteProducts.length ? (
-              <p className="absolute top-2 right-1 px-[3px] border border-gray-100 text-amazon_yellow text-center">
+              <p className="absolute top-2 right-1 px-[3px] border border-gray-100 text-amazon_green text-center">
                 {favoriteProducts.length}
               </p>
             ) : null}
@@ -201,7 +201,7 @@ function Header() {
             alt="cart icon"
           />
           <p className="font-bold text-white ">Cart</p>
-          <p className="absolute top-2 text-sm left-[29px] text-amazon_yellow ">
+          <p className="absolute top-2 text-sm left-[29px] text-amazon_green ">
             {allCartProducts ? allCartProducts : 0}
           </p>
         </Link>

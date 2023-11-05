@@ -9,9 +9,9 @@ function CartPage() {
   const dispatch = useDispatch();
   return (
     <>
-    <Head>
-      <title>Store Cart</title>
-    </Head>
+      <Head>
+        <title>Store Cart</title>
+      </Head>
       <div
         className={`p-3 px-4 bg-gray-300 h-max ${
           cartProducts.length ? " xl:flex gap-5" : ""
@@ -22,7 +22,7 @@ function CartPage() {
             <div className="flex flex-col h-[50vh] justify-center items-center ">
               <p>your cart is empty !</p>
               <Link href={"/"}>
-                <p className="py-3 mt-3 text-sm font-semibold text-white duration-300 bg-black rounded-lg px-14 hover:bg-amazon_yellow hover:text-black">
+                <p className="py-3 mt-3 text-sm font-semibold text-white duration-300 bg-black rounded-lg px-14 hover:bg-amazon_green hover:text-black">
                   go to shopping !
                 </p>
               </Link>

@@ -56,7 +56,7 @@ function Products({ productsList }) {
                     alt={title}
                   />
                 </div>
-              </Link> 
+              </Link>
               <hr className="mt-2" />
               <div className="absolute right-0 flex flex-col items-center h-24 text-lg transition-transform duration-300 translate-x-20 bg-transparent border border-gray-400 rounded-md cursor-pointer w-11 bottom-2/3 group-hover:translate-x-[-16px] bg-white">
                 <span
@@ -75,7 +75,7 @@ function Products({ productsList }) {
                       })
                     );
                   }}
-                  className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_yellow"
+                  className="flex items-center justify-center w-full h-12 duration-200 border-b border-gray-400 hover:bg-amazon_green"
                 >
                   <FaShoppingCart />
                 </span>
@@ -95,7 +95,7 @@ function Products({ productsList }) {
                       })
                     );
                   }}
-                  className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_yellow"
+                  className="flex items-center justify-center w-full h-12 duration-200 hover:bg-amazon_green"
                 >
                   <FaHeart
                     className={`${
@@ -108,7 +108,7 @@ function Products({ productsList }) {
                 </span>
               </div>
               {isNew && (
-                <p className="absolute text-sm tracking-wide right-2 top-3 group-hover:animate-bounce group-hover:text-amazon_yellow ">
+                <p className="absolute text-sm tracking-wide right-2 top-3 group-hover:animate-bounce group-hover:text-amazon_green ">
                   !save {<FormattedPrice amount={oldPrice - price} />}
                 </p>
               )}
@@ -143,7 +143,7 @@ function Products({ productsList }) {
                       })
                     )
                   }
-                  className="py-3 mt-1 text-sm font-medium text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
+                  className="py-3 mt-1 text-sm font-medium text-white duration-300 bg-black rounded-md hover:bg-amazon_green hover:text-black"
                 >
                   add to cart
                 </button>

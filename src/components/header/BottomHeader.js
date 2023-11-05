@@ -5,6 +5,7 @@ import { removeUser } from "@/store/itemsSlice";
 const BottomHeader = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.items.userInfo);
+  console.log(userInfo);
   return (
     <div className="flex items-center w-full h-10 gap-3 px-4 text-sm text-center text-white bg-amazon_light">
       <div className="flex items-center gap-1 p-1 duration-300 border border-transparent hover:border-gray-50 hover:cursor-pointer">
@@ -26,13 +27,13 @@ const BottomHeader = () => {
       <p className="hidden p-1 duration-300 border border-transparent md:inline-flex hover:border-gray-50 hover:cursor-pointer">
         Sell
       </p>
-      {!userInfo && (
+      {userInfo !== null && (
         <p
           onClick={() => {
             dispatch(removeUser());
             signOut();
           }}
-          className="hidden p-1 duration-300 border border-transparent md:inline-flex hover:border-red-600 hover:cursor-pointer text-amazon_yellow hover:text-red-400"
+          className="hidden p-1 duration-300 border border-transparent md:inline-flex hover:border-red-600 hover:cursor-pointer text-amazon_green hover:text-red-400"
         >
           Sign Out
         </p>

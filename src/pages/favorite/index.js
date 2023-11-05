@@ -9,16 +9,16 @@ function FavoritePage() {
   const dispatch = useDispatch();
   return (
     <>
-    <Head>
-      <title>Favorite Products</title>
-    </Head>
+      <Head>
+        <title>Favorite Products</title>
+      </Head>
       <div className="p-3 bg-gray-300 h-max">
         <div className="max-w-screen-xl m-2 mx-auto rounded-lg bg-slate-50 h-max">
           {!favoriteList.length ? (
             <div className="flex flex-col h-[50vh] justify-center items-center ">
               <p>No favorite items you added !</p>
               <Link href={"/"}>
-                <p className="py-3 mt-3 text-sm font-semibold text-white duration-300 bg-black rounded-lg px-14 hover:bg-amazon_yellow hover:text-black">
+                <p className="py-3 mt-3 text-sm font-semibold text-white duration-300 bg-black rounded-lg px-14 hover:bg-amazon_green hover:text-black">
                   return to products list
                 </p>
               </Link>

@@ -60,7 +60,7 @@ const SingleProduct = () => {
                       })
                     )
                   }
-                  className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300"
+                  className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_green cursor-pointer duration-300"
                 >
                   <HiShoppingCart />
                 </span>
@@ -81,7 +81,7 @@ const SingleProduct = () => {
                       })
                     )
                   }
-                  className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300"
+                  className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_green cursor-pointer duration-300"
                 >
                   <FaHeart />
                 </span>
@@ -128,7 +128,7 @@ const SingleProduct = () => {
                       })
                     )
                   }
-                  className="w-full h-12 mt-5 text-base font-semibold text-gray-200 duration-300 rounded-lg md:w-96 bg-amazon_blue hover:bg-amazon_yellow hover:text-amazon_blue"
+                  className="w-full h-12 mt-5 text-base font-semibold text-gray-200 duration-300 rounded-lg md:w-96 bg-amazon_blue hover:bg-amazon_green hover:text-amazon_blue"
                 >
                   add to cart
                 </button>

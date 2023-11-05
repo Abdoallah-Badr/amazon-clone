@@ -27,7 +27,10 @@ function ProductCard({
 }) {
   const dispatch = useDispatch();
   return (
-    <div key={_id} className="flex p-4 mb-4 bg-gray-100 max-md:flex-wrap rounded-xl">
+    <div
+      key={_id}
+      className="flex p-4 mb-4 bg-gray-100 max-md:flex-wrap rounded-xl"
+    >
       <span className="mr-2 shrink-0 max-md:basis-full ">
         <Image
           className="max-md:mx-auto"
@@ -52,7 +55,7 @@ function ProductCard({
           {/* ***buttons difference between cart and favorite*** */}
           {/* cart buttons */}
           {(type === "CART" && (
-            <div className="flex gap-5 mt-4 item-center"> 
+            <div className="flex gap-5 mt-4 item-center">
               <div className="bottom-0 flex items-center justify-between w-32 h-6 gap-2 p-4 border border-gray-300 rounded-full shadow-lg">
                 <span
                   onClick={() => dispatch(inCreaseQuantity({ _id }))}
@@ -95,7 +98,7 @@ function ProductCard({
                     })
                   )
                 }
-                className="px-5 py-3 mt-1 text-sm font-semibold text-white duration-300 bg-black rounded-md hover:bg-amazon_yellow hover:text-black"
+                className="px-5 py-3 mt-1 text-sm font-semibold text-white duration-300 bg-black rounded-md hover:bg-amazon_green hover:text-black"
               >
                 add to cart
               </button>
