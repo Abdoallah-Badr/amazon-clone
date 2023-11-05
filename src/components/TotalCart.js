@@ -8,6 +8,7 @@ function TotalCart() {
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState(0);
   const cartProducts = useSelector((state) => state.items.cartProducts);
+  const userInfo = useSelector((state) => state.items.userInfo);
 
   useEffect(() => {
     setTotalPrice(0);
@@ -23,6 +24,9 @@ function TotalCart() {
   const { data: session } = useSession();
 
   const handleCheckout = async () => {
+    if (userInfo === null) {
+      return;
+    }
     const stripe = await stripePromise;
 
     const response = await fetch("/api/checkout", {
@@ -63,12 +67,14 @@ function TotalCart() {
       <button
         onClick={handleCheckout}
         className={`w-full py-2 font-medium text-white  rounded-md text-md bg-black hover:bg-amazon_green hover:text-black duration-300 ${
-          !userInfo ? "hover:cursor-not-allowed bg-gray-500" : ""
+          userInfo === null
+            ? "hover:cursor-not-allowed hover:bg-gray-500 bg-gray-500 "
+            : ""
         }`}
       >
         Proceed to Pay
       </button>
-      {!userInfo && (
+      {userInfo === null && (
         <p className="mx-auto text-xs font-medium text-center text-red-500 animate-bounce">
           Please login to continue
         </p>
