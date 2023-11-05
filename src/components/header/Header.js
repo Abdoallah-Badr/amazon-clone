@@ -25,7 +25,6 @@ function Header() {
     useSelector((state) => state.items);
   const handleSearch = (e) => {
     setQuery(e.target.value);
-
   };
   useEffect(() => {
     if (query) {
@@ -37,13 +36,15 @@ function Header() {
     }
   }, [query, allProducts]);
   useEffect(() => {
-    dispatch(
-      addUserInfo({
-        name: session?.user?.name,
-        image: session?.user?.image,
-        email: session?.user?.email,
-      })
-    );
+    if (session?.user?.name) {
+      dispatch(
+        addUserInfo({
+          name: session?.user?.name,
+          image: session?.user?.image,
+          email: session?.user?.email,
+        })
+      );
+    }
   }, [session, dispatch]);
 
   useEffect(() => {
@@ -168,12 +169,12 @@ function Header() {
               className="mr-1 rounded-full"
               width={32}
               height={32}
-              src={userInfo.image}
+              src={session?.user?.image}
               alt={"user image"}
             />
             <span>
-              <p className="text-xs font-bold"> {userInfo.name} </p>
-              <p className="text-xs ">{userInfo.email}</p>
+              <p className="text-xs font-bold"> {session?.user?.name} </p>
+              <p className="text-xs ">{session?.user?.email}</p>
             </span>
           </div>
         )}

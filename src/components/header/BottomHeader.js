@@ -26,7 +26,7 @@ const BottomHeader = () => {
       <p className="hidden p-1 duration-300 border border-transparent md:inline-flex hover:border-gray-50 hover:cursor-pointer">
         Sell
       </p>
-      {userInfo && (
+      {!userInfo && (
         <p
           onClick={() => {
             dispatch(removeUser());

@@ -7,8 +7,6 @@ import { useSession } from "next-auth/react";
 function TotalCart() {
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState(0);
-
-  const userInfo = useSelector((state) => state.items.userInfo);
   const cartProducts = useSelector((state) => state.items.cartProducts);
 
   useEffect(() => {
@@ -38,7 +36,7 @@ function TotalCart() {
       }),
     });
     const checkoutSession = await response.json();
-  
+
     const result = await stripe.redirectToCheckout({
       sessionId: checkoutSession.id,
     });
