@@ -21,12 +21,11 @@ function Header() {
   const [showSearched, setShowSearched] = useState(false);
   const [foucsOnSearch, setFoucsOnSearch] = useState(false);
   const inputRef = useRef(null);
-  console.log(showSearched);
   const { allCartProducts, favoriteProducts, userInfo, allProducts } =
     useSelector((state) => state.items);
   const handleSearch = (e) => {
     setQuery(e.target.value);
-    console.log(filteredItems);
+
   };
   useEffect(() => {
     if (query) {

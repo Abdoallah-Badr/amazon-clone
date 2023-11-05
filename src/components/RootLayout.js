@@ -8,6 +8,7 @@ function RootLayout({ children }) {
     <>
       <Head>
         <title>Amazon Clone Store</title>
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Header />
       <BottomHeader />
