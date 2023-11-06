@@ -19,12 +19,12 @@ export default async function handler(req, res) {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         shipping_address_collection: {
-          allowed_countries: ["BD", "US", "OM", "CA", "GB"],
+          allowed_countries: ["EG", "SA", "MA", "US", "OM", "GB"],
         },
         line_items: modifiedItems,
         mode: "payment",
         success_url: `${process.env.NEXTAUTH_URL}/success`,
-        cancel_url: `${process.env.NEXTAUTH_URL}/checkout`,
+        cancel_url: `${process.env.NEXTAUTH_URL}/cart`,
         metadata: {
           email,
           images: JSON.stringify(items.map((item) => item.image)),

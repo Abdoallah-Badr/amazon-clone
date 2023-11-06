@@ -20,8 +20,7 @@ function Header() {
   const [filteredItems, setFilteredItems] = useState([]);
   const [showSearched, setShowSearched] = useState(false);
   const [foucsOnSearch, setFoucsOnSearch] = useState(false);
-  const inputRef = useRef(null);
-  const { allCartProducts, favoriteProducts, userInfo, allProducts } =
+  const { allCartProducts, favoriteProducts, allProducts } =
     useSelector((state) => state.items);
   const handleSearch = (e) => {
     setQuery(e.target.value);
@@ -87,7 +86,6 @@ function Header() {
           className="relative items-center justify-between flex-1 hidden h-10 rounded-md md:inline-flex "
         >
           <input
-            ref={inputRef}
             type="text"
             placeholder="search amazon clone project"
             className="flex-1 w-full h-full px-2 text-base text-black border-transparent rounded-md outline-none placeholder:text-sm focus:border-none indent-1 hover:ring-2 hover:ring-amazon_green"
