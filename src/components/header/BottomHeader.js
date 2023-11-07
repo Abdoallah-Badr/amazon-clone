@@ -5,7 +5,6 @@ import { removeUser } from "@/store/itemsSlice";
 const BottomHeader = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.items.userInfo);
-  console.log(userInfo);
   return (
     <div className="flex items-center w-full h-10 gap-3 px-4 text-sm text-center text-white bg-amazon_light">
       <div className="flex items-center gap-1 p-1 duration-300 border border-transparent hover:border-gray-50 hover:cursor-pointer">

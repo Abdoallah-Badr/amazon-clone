@@ -50,7 +50,7 @@ function TotalCart() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center w-2/6 gap-4 p-3 mt-2 rounded-lg bg-slate-50 h-max">
+    <div className="flex flex-col items-start justify-center w-2/6 gap-4 p-3 mt-2 rounded-lg bg-slate-50 h-max max-md:w-2/4">
       <div className="flex gap-1 ">
         <span className="flex items-center justify-center w-6 h-6 p-1 mt-1 text-white bg-green-600 rounded-full">
           <GiDandelionFlower className="text-md" />
