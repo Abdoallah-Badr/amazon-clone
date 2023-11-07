@@ -20,8 +20,9 @@ function Header() {
   const [filteredItems, setFilteredItems] = useState([]);
   const [showSearched, setShowSearched] = useState(false);
   const [foucsOnSearch, setFoucsOnSearch] = useState(false);
-  const { allCartProducts, favoriteProducts, allProducts } =
-    useSelector((state) => state.items);
+  const { allCartProducts, favoriteProducts, allProducts } = useSelector(
+    (state) => state.items
+  );
   const handleSearch = (e) => {
     setQuery(e.target.value);
   };
@@ -77,9 +78,6 @@ function Header() {
         </div>
         {/* search bar */}
         <div
-          onBlur={() => {
-            setShowSearched(false);
-          }}
           onFocus={() => {
             setFoucsOnSearch(true);
           }}
@@ -96,6 +94,9 @@ function Header() {
             <div className="absolute flex-col w-full gap-3 overflow-scroll overflow-x-hidden text-black rounded bg-slate-100 top-11 h-80">
               {filteredItems.map((item) => (
                 <Link
+                  onBlur={() => {
+                    setShowSearched(false);
+                  }}
                   href={{
                     pathname: `/${item._id}`,
                     query: {
@@ -112,7 +113,12 @@ function Header() {
                   }}
                   key={item._id}
                 >
-                  <div className="flex items-center justify-start gap-2">
+                  <div
+                    onClick={() => {
+                      setShowSearched(false);
+                    }}
+                    className="flex items-center justify-start gap-2"
+                  >
                     <Image
                       src={item.image}
                       alt={item.title}
