@@ -28,7 +28,7 @@ This is a clone of the Amazon website using Next.js, Redux, Stripe, and NextAuth
 
 ## Demo
 
-You can view a live demo of the project [here]('https://amazon-clone-test.vercel.app/').
+You can view a live demo of the project [here](https://amazon-clone-test.vercel.app/).
 
 ## Technologies
 
